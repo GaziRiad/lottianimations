@@ -1,10 +1,9 @@
 "use client";
 
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function LottieAnimation({ src }) {
-  console.log(src);
   const [dotLottie, setDotLottie] = useState(null);
 
   const dotLottieRefCallback = (dotLottieInstance) => {
@@ -23,15 +22,13 @@ function LottieAnimation({ src }) {
     }
   }
 
-  console.log(dotLottie);
-
   return (
     <div onMouseEnter={() => play()} onMouseLeave={() => stop()}>
       <DotLottieReact
         dotLottieRefCallback={dotLottieRefCallback}
         src={src}
         loop
-        autoplay={dotLottie}
+        playOnHover={true}
       />
     </div>
   );
