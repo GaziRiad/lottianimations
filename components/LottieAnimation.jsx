@@ -7,13 +7,6 @@ function LottieAnimation({ src }) {
   console.log(src);
   const [dotLottie, setDotLottie] = useState(null);
 
-  useEffect(() => {
-    if (dotLottie) {
-      dotLottie.setFrame(30);
-      dotLottie.stop(); // Ensures the animation is preloaded but stopped
-    }
-  }, [dotLottie]);
-
   const dotLottieRefCallback = (dotLottieInstance) => {
     setDotLottie(dotLottieInstance);
   };
@@ -30,12 +23,15 @@ function LottieAnimation({ src }) {
     }
   }
 
+  console.log(dotLottie);
+
   return (
     <div onMouseEnter={() => play()} onMouseLeave={() => stop()}>
       <DotLottieReact
         dotLottieRefCallback={dotLottieRefCallback}
         src={src}
         loop
+        autoplay={dotLottie}
       />
     </div>
   );
